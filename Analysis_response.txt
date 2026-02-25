@@ -1,0 +1,3 @@
+1. The child's memory gets replaced when exec is called, replacing it with the new processes' image.
+2 and 3. We need both fork() and exec() because if we exec in the parent/main process, it could mess up the system should there be an error. So we use fork to use the child's process to run exec so that should there be an error, it can quit with the exit(1).
+4.The child must exit() instead of return after a failed exec because then both the child and parent will be executing parent code.
